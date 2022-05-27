@@ -34,7 +34,7 @@ pipeline{
             echo "successful"
         }
 
-        failute{
+        failure{
             echo "look into the script"
         }
     }
