@@ -10,7 +10,7 @@ pipeline{
     stages{
         stage('sourcecode'){
             steps{
-                git url: 'https://github.com/ashishdevops123/scriptedpet.git'
+                git url: 'https://github.com/ashishdevops123/scriptedpet.git' ,
                     branch: 'declarative'
             }
         }
