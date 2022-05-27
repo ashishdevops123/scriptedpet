@@ -23,7 +23,7 @@ pipeline{
 
         stage('packaging'){
             steps{
-                sh script: "choice: ${params.GOAL}"
+                sh script: mvn {"choice: ${params.GOAL}"}
             }
         }
 
