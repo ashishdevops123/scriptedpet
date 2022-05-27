@@ -1,0 +1,46 @@
+pipeline{
+    agent{ label 'build_pipeline'}
+
+    options { retry(3) }
+
+    triggers{
+        cron('0 * * * 1-5')
+    }
+
+    stages{
+        stage('sourcecode'){
+            steps{
+                git url: 'https://github.com/ashishdevops123/scriptedpet.git'
+                    branch: 'declarative'
+            }
+        }
+
+        stage('packaging'){
+            steps{
+                sh script: "mvn clean package"
+            }
+        }
+
+        stage('junit and archieve'){
+            steps{
+                junit testResults: 'target/surefire-reports/*.xml'
+
+            }
+        }
+        
+    }
+    post{
+        success{
+            echo "successful"
+        }
+
+        failute{
+            echo "look into the script"
+        }
+    }
+
+
+
+
+
+}
