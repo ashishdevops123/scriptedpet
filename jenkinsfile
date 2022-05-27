@@ -1,5 +1,15 @@
 node('build_pipeline'){
     stage('sourcecode'){
-        
+        git branch: 'scripted', url: 'https://github.com/ashishdevops123/scriptedpet.git'
     }
+    
+    stage('clean package'){
+        sh "mvn clean package"
+    }
+
+    stage('junit and archieve'){
+        junit '**/surefire-reports/*.xml'
+        archiveArtifacts artifacts: '**/*.war', followSymlinks: false
+    }
+    
 }
